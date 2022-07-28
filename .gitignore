@@ -11,3 +11,5 @@ crash.log
 
 # terraform.lock.hcl files
 .terraform.lock.hcl
+
+tfplan
