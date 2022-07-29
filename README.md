@@ -18,9 +18,8 @@ Terraform Module to create an Azure storage account with a set of containers (an
 
 ---
 
-<!-- BEGIN_TF_DOCS -->
 ## Usage
-```hcl
+```terraform
 module "resource_group" {
   source  = "getindata/resource-group/azurerm"
   version = "1.1.0"
@@ -31,7 +30,8 @@ module "resource_group" {
 }
 
 module "storage_account" {
-  source  = "../.."
+  source  = "getindata/resource-group/azurerm"
+  version = "1.0.0"
   context = module.this.context
 
   name = "example"
@@ -51,6 +51,7 @@ module "storage_account" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
 
 
 
