@@ -7,9 +7,9 @@ sections:
   show: [all]
 
 content: |-
-  ## EXAMPLES
+  ## Usage
   ```hcl
-  {{ include "example/full-example/main.tf" }}
+  {{ include "examples/basic/main.tf" }}
   ```
 
   {{ .Header }}
