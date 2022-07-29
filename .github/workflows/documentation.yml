@@ -15,3 +15,4 @@ jobs:
         working-dir: .
         config-file: .terraform-docs.yml
         git-push: "true"
+q
