@@ -31,8 +31,7 @@ module "resource_group" {
 }
 
 module "storage_account" {
-  source  = "getindata/resource-group/azurerm"
-  version = "1.0.0"
+  source  = "../.."
   context = module.this.context
 
   name = "example"
