@@ -22,7 +22,7 @@ Terraform Module to create an Azure storage account with a set of containers (an
 ```terraform
 module "resource_group" {
   source  = "getindata/resource-group/azurerm"
-  version = "1.1.0"
+  version = "1.2.0"
   context = module.this.context
 
   name     = "example-rg"
@@ -159,8 +159,7 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 
 ## AUTHORS
 
-<!--- Replace repository name -->
-<a href="https://github.com/getindata/REPO_NAME/graphs/contributors">
+<a href="https://github.com/getindata/terraform-azurerm-storage-account/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=getindata/terraform-module-template" />
 </a>
 
