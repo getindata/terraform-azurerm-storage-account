@@ -17,7 +17,7 @@ module "storage" {
   count = module.this.enabled ? 1 : 0
 
   create_resource_group                = false
-  resource_group_name                  = var.resource_group_name
+  resource_group_name                  = local.resource_group_name
   storage_account_name                 = local.name_from_descriptor
   account_kind                         = var.account_kind
   skuname                              = var.skuname
