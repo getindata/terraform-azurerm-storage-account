@@ -11,7 +11,10 @@ locals {
     ip_rules   = []
   } : var.network_rules)
 
-  resource_group_name  = one(module.storage[*].resource_group_name)
-  storage_account_id   = one(module.storage[*].storage_account_id)
-  storage_account_name = one(module.storage[*].storage_account_name)
+  resource_group_name     = var.create_resource_group ? one(module.resource_group[*].name) : var.resource_group_name
+  resource_group_location = var.create_resource_group ? one(module.resource_group[*].location) : one(module.storage[*].resource_group_location)
+
+  storage_account_id       = one(module.storage[*].storage_account_id)
+  storage_account_name     = one(module.storage[*].storage_account_name)
+  storage_account_location = one(module.storage[*].resource_group_location)
 }

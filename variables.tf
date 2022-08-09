@@ -4,8 +4,15 @@ variable "resource_group_name" {
 }
 
 variable "location" {
-  type        = string
   description = "Azure datacenter location, where resources will be deployed"
+  default     = null
+  type        = string
+}
+
+variable "create_resource_group" {
+  description = "Whether to create resource group and use it for storage resources"
+  default     = false
+  type        = bool
 }
 
 variable "account_kind" {
