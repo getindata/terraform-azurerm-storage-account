@@ -1,3 +1,15 @@
+module "resource_group" {
+  source  = "getindata/resource-group/azurerm"
+  version = "1.1.0"
+
+  context = module.this.context
+
+  name     = var.resource_group_name
+  location = var.location
+
+  count = module.this.enabled && var.create_resource_group ? 1 : 0
+}
+
 module "storage" {
   source  = "kumarvna/storage/azurerm"
   version = "2.5.0"
@@ -6,7 +18,6 @@ module "storage" {
 
   create_resource_group                = false
   resource_group_name                  = var.resource_group_name
-  location                             = var.location
   storage_account_name                 = local.name_from_descriptor
   account_kind                         = var.account_kind
   skuname                              = var.skuname
@@ -28,6 +39,8 @@ module "storage" {
   managed_identity_ids                 = var.managed_identity_ids
 
   tags = module.this.tags
+
+  depends_on = [module.resource_group]
 }
 
 resource "azurerm_role_assignment" "this" {
@@ -71,9 +84,9 @@ module "this_private_endpoint_label" {
 resource "azurerm_private_endpoint" "this" {
   count = module.this.enabled && var.private_endpoint_enabled ? 1 : 0
 
-  location            = var.location
+  location            = local.resource_group_location
   name                = local.private_endpoint_name_from_descriptor
-  resource_group_name = var.resource_group_name
+  resource_group_name = local.resource_group_name
   subnet_id           = var.private_endpoint_subnet_id
 
   private_service_connection {
