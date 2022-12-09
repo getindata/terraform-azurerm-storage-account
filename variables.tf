@@ -16,7 +16,7 @@ variable "create_resource_group" {
 }
 
 variable "account_kind" {
-  description = "The type of storage account. Valid options are BlobStorage, BlockBlobStorage, FileStorage, Storage and StorageV2."
+  description = "The type of storage account. Valid options are BlobStorage, BlockBlobStorage, FileStorage, Storage and StorageV2"
   default     = "StorageV2"
   type        = string
 }
@@ -34,7 +34,7 @@ variable "is_hns_enabled" {
 }
 
 variable "access_tier" {
-  description = "Defines the access tier for BlobStorage and StorageV2 accounts. Valid options are Hot and Cool."
+  description = "Defines the access tier for BlobStorage and StorageV2 accounts. Valid options are Hot and Cool"
   default     = "Hot"
   type        = string
 }
@@ -76,25 +76,25 @@ variable "change_feed_enabled" {
 }
 
 variable "enable_advanced_threat_protection" {
-  description = "Boolean flag which controls if advanced threat protection is enabled."
+  description = "Boolean flag which controls if advanced threat protection is enabled"
   default     = false
   type        = bool
 }
 
 variable "network_rules" {
-  description = "Network rules restricing access to the storage account."
+  description = "Network rules restricing access to the storage account"
   type        = object({ bypass = list(string), ip_rules = list(string), subnet_ids = list(string) })
   default     = null
 }
 
 variable "containers_list" {
-  description = "List of containers to create and their access levels."
+  description = "List of containers to create and their access levels"
   type        = list(object({ name = string, access_type = string }))
   default     = []
 }
 
 variable "file_shares" {
-  description = "List of containers to create and their access levels."
+  description = "List of containers to create and their access levels"
   type        = list(object({ name = string, quota = number }))
   default     = []
 }
@@ -106,7 +106,7 @@ variable "queues" {
 }
 
 variable "tables" {
-  description = "List of storage tables."
+  description = "List of storage tables"
   type        = list(string)
   default     = []
 }
@@ -123,7 +123,7 @@ variable "managed_identity_type" {
 }
 
 variable "managed_identity_ids" {
-  description = "A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine."
+  description = "A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine"
   default     = null
   type        = list(string)
 }
