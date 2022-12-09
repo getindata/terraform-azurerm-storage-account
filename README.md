@@ -112,7 +112,7 @@ module "storage_account" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_diagnostic_settings"></a> [diagnostic\_settings](#module\_diagnostic\_settings) | claranet/diagnostic-settings/azurerm | 5.0.0 |
+| <a name="module_diagnostic_settings"></a> [diagnostic\_settings](#module\_diagnostic\_settings) | claranet/diagnostic-settings/azurerm | 6.2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | getindata/resource-group/azurerm | 1.1.0 |
 | <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.6.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
@@ -122,9 +122,22 @@ module "storage_account" {
 
 | Name | Description |
 |------|-------------|
+| <a name="output_containers"></a> [containers](#output\_containers) | Map of containers. |
+| <a name="output_file_shares"></a> [file\_shares](#output\_file\_shares) | Map of Storage SMB file shares. |
+| <a name="output_queues"></a> [queues](#output\_queues) | Map of Storage SMB file shares. |
+| <a name="output_resource_group_id"></a> [resource\_group\_id](#output\_resource\_group\_id) | The id of the resource group in which resources are created |
+| <a name="output_resource_group_location"></a> [resource\_group\_location](#output\_resource\_group\_location) | The location of the resource group in which resources are created |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | The name of the resource group in which resources are created |
 | <a name="output_storage_account_id"></a> [storage\_account\_id](#output\_storage\_account\_id) | The ID of the storage account. |
 | <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | The name of the storage account. |
+| <a name="output_storage_account_primary_blob_endpoint"></a> [storage\_account\_primary\_blob\_endpoint](#output\_storage\_account\_primary\_blob\_endpoint) | The endpoint URL for blob storage in the primary location. |
+| <a name="output_storage_account_primary_location"></a> [storage\_account\_primary\_location](#output\_storage\_account\_primary\_location) | The primary location of the storage account |
+| <a name="output_storage_account_primary_web_endpoint"></a> [storage\_account\_primary\_web\_endpoint](#output\_storage\_account\_primary\_web\_endpoint) | The endpoint URL for web storage in the primary location. |
+| <a name="output_storage_account_primary_web_host"></a> [storage\_account\_primary\_web\_host](#output\_storage\_account\_primary\_web\_host) | The hostname with port if applicable for web storage in the primary location. |
+| <a name="output_storage_primary_access_key"></a> [storage\_primary\_access\_key](#output\_storage\_primary\_access\_key) | The primary access key for the storage account |
+| <a name="output_storage_primary_connection_string"></a> [storage\_primary\_connection\_string](#output\_storage\_primary\_connection\_string) | The primary connection string for the storage account |
+| <a name="output_storage_secondary_access_key"></a> [storage\_secondary\_access\_key](#output\_storage\_secondary\_access\_key) | The primary access key for the storage account. |
+| <a name="output_tables"></a> [tables](#output\_tables) | Map of Storage SMB file shares. |
 
 ## Providers
 
