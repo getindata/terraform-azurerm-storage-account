@@ -11,7 +11,7 @@ module "resource_group" {
 }
 
 module "storage" {
-  source = "github.com/getindata/terraform-azurerm-storage?ref=2.6.0"
+  source = "github.com/getindata/terraform-azurerm-storage?ref=2.7.0"
 
   count = module.this.enabled ? 1 : 0
 
@@ -21,6 +21,7 @@ module "storage" {
   account_kind                         = var.account_kind
   skuname                              = var.skuname
   is_hns_enabled                       = var.is_hns_enabled
+  sftp_enabled                         = var.sftp_enabled
   access_tier                          = var.access_tier
   min_tls_version                      = var.min_tls_version
   blob_soft_delete_retention_days      = var.blob_soft_delete_retention_days
