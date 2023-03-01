@@ -100,6 +100,7 @@ module "storage_account" {
 | <a name="input_queues"></a> [queues](#input\_queues) | List of storages queues | `list(string)` | `[]` | no |
 | <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br>Characters matching the regex will be removed from the ID elements.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | A container that holds related resources for an Azure solution | `string` | n/a | yes |
+| <a name="input_sftp_enabled"></a> [sftp\_enabled](#input\_sftp\_enabled) | Enable SFTP for the storage account | `bool` | `false` | no |
 | <a name="input_skuname"></a> [skuname](#input\_skuname) | The SKUs supported by Microsoft Azure Storage. Valid options are Premium\_LRS, Premium\_ZRS, Standard\_GRS, Standard\_GZRS, Standard\_LRS, Standard\_RAGRS, Standard\_RAGZRS, Standard\_ZRS | `string` | `"Standard_RAGRS"` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_storage_blob_data_contributors"></a> [storage\_blob\_data\_contributors](#input\_storage\_blob\_data\_contributors) | List of principal IDs that will have data contributor role | `list(string)` | `[]` | no |
@@ -114,7 +115,7 @@ module "storage_account" {
 |------|--------|---------|
 | <a name="module_diagnostic_settings"></a> [diagnostic\_settings](#module\_diagnostic\_settings) | claranet/diagnostic-settings/azurerm | 6.2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | getindata/resource-group/azurerm | 1.1.0 |
-| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.6.0 |
+| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.7.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 | <a name="module_this_private_endpoint_label"></a> [this\_private\_endpoint\_label](#module\_this\_private\_endpoint\_label) | cloudposse/label/null | 0.25.0 |
 
