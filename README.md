@@ -30,8 +30,8 @@ module "resource_group" {
 }
 
 module "storage_account" {
-  source  = "getindata/resource-group/azurerm"
-  version = "1.0.0"
+  source  = "getindata/storage-account/azurerm"
+  version = "1.4.0"
   context = module.this.context
 
   name = "example"
@@ -69,6 +69,7 @@ module "storage_account" {
 | <a name="input_container_soft_delete_retention_days"></a> [container\_soft\_delete\_retention\_days](#input\_container\_soft\_delete\_retention\_days) | Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7` | `number` | `7` | no |
 | <a name="input_containers_list"></a> [containers\_list](#input\_containers\_list) | List of containers to create and their access levels | `list(object({ name = string, access_type = string }))` | `[]` | no |
 | <a name="input_context"></a> [context](#input\_context) | Single object for setting entire context at once.<br>See description of individual variables for details.<br>Leave string and numeric variables as `null` to use default value.<br>Individual variable settings (non-null) override settings in context object,<br>except for attributes, tags, and additional\_tag\_map, which are merged. | `any` | <pre>{<br>  "additional_tag_map": {},<br>  "attributes": [],<br>  "delimiter": null,<br>  "descriptor_formats": {},<br>  "enabled": true,<br>  "environment": null,<br>  "id_length_limit": null,<br>  "label_key_case": null,<br>  "label_order": [],<br>  "label_value_case": null,<br>  "labels_as_tags": [<br>    "unset"<br>  ],<br>  "name": null,<br>  "namespace": null,<br>  "regex_replace_chars": null,<br>  "stage": null,<br>  "tags": {},<br>  "tenant": null<br>}</pre> | no |
+| <a name="input_cors_rule"></a> [cors\_rule](#input\_cors\_rule) | A map of CORS rules to add to the storage account | <pre>object({<br>    allowed_origins    = optional(list(string))<br>    allowed_methods    = optional(list(string))<br>    allowed_headers    = optional(list(string))<br>    exposed_headers    = optional(list(string))<br>    max_age_in_seconds = optional(number)<br>  })</pre> | `null` | no |
 | <a name="input_create_resource_group"></a> [create\_resource\_group](#input\_create\_resource\_group) | Whether to create resource group and use it for storage resources | `bool` | `false` | no |
 | <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | Delimiter to be used between ID elements.<br>Defaults to `-` (hyphen). Set to `""` to use no delimiter at all. | `string` | `null` | no |
 | <a name="input_descriptor_formats"></a> [descriptor\_formats](#input\_descriptor\_formats) | Describe additional descriptors to be output in the `descriptors` output map.<br>Map of maps. Keys are names of descriptors. Values are maps of the form<br>`{<br>   format = string<br>   labels = list(string)<br>}`<br>(Type is `any` so the map values can later be enhanced to provide additional options.)<br>`format` is a Terraform format string to be passed to the `format()` function.<br>`labels` is a list of labels, in order, to pass to `format()` function.<br>Label values will be normalized before being passed to `format()` so they will be<br>identical to how they appear in `id`.<br>Default is `{}` (`descriptors` output will be empty). | `any` | `{}` | no |
@@ -115,7 +116,7 @@ module "storage_account" {
 |------|--------|---------|
 | <a name="module_diagnostic_settings"></a> [diagnostic\_settings](#module\_diagnostic\_settings) | claranet/diagnostic-settings/azurerm | 6.2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | getindata/resource-group/azurerm | 1.1.0 |
-| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.7.0 |
+| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.8.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 | <a name="module_this_private_endpoint_label"></a> [this\_private\_endpoint\_label](#module\_this\_private\_endpoint\_label) | cloudposse/label/null | 0.25.0 |
 

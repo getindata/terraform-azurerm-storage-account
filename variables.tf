@@ -175,3 +175,15 @@ variable "private_endpoint_private_dns_zone_ids" {
   default     = []
   description = "Private DNS Zone Ids associated with the Private Endpoint. They need to match the subresource name"
 }
+
+variable "cors_rule" {
+  description = "A map of CORS rules to add to the storage account"
+  type = object({
+    allowed_origins    = optional(list(string))
+    allowed_methods    = optional(list(string))
+    allowed_headers    = optional(list(string))
+    exposed_headers    = optional(list(string))
+    max_age_in_seconds = optional(number)
+  })
+  default = null
+}
