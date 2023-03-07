@@ -187,3 +187,15 @@ variable "cors_rule" {
   })
   default = null
 }
+
+variable "use_raw_name" {
+  description = "Don't add module naming convention"
+  type        = bool
+  default     = false
+}
+
+variable "descriptor_name" {
+  description = "Descriptor name"
+  type        = string
+  default     = "storage-account" #For backward compatibility reasons
+}

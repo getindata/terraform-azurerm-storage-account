@@ -11,7 +11,7 @@ module "resource_group" {
 }
 
 module "storage" {
-  source = "github.com/getindata/terraform-azurerm-storage?ref=2.8.0"
+  source = "github.com/getindata/terraform-azurerm-storage?ref=2.9.0"
 
   count = module.this.enabled ? 1 : 0
 
@@ -39,6 +39,7 @@ module "storage" {
   managed_identity_type                = var.managed_identity_type
   managed_identity_ids                 = var.managed_identity_ids
   cors_rule                            = var.cors_rule
+  use_raw_name                         = var.use_raw_name
 
   tags = module.this.tags
 
