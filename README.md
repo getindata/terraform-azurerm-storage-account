@@ -73,6 +73,7 @@ module "storage_account" {
 | <a name="input_create_resource_group"></a> [create\_resource\_group](#input\_create\_resource\_group) | Whether to create resource group and use it for storage resources | `bool` | `false` | no |
 | <a name="input_delimiter"></a> [delimiter](#input\_delimiter) | Delimiter to be used between ID elements.<br>Defaults to `-` (hyphen). Set to `""` to use no delimiter at all. | `string` | `null` | no |
 | <a name="input_descriptor_formats"></a> [descriptor\_formats](#input\_descriptor\_formats) | Describe additional descriptors to be output in the `descriptors` output map.<br>Map of maps. Keys are names of descriptors. Values are maps of the form<br>`{<br>   format = string<br>   labels = list(string)<br>}`<br>(Type is `any` so the map values can later be enhanced to provide additional options.)<br>`format` is a Terraform format string to be passed to the `format()` function.<br>`labels` is a list of labels, in order, to pass to `format()` function.<br>Label values will be normalized before being passed to `format()` so they will be<br>identical to how they appear in `id`.<br>Default is `{}` (`descriptors` output will be empty). | `any` | `{}` | no |
+| <a name="input_descriptor_name"></a> [descriptor\_name](#input\_descriptor\_name) | Descriptor name | `string` | `"storage-account"` | no |
 | <a name="input_diagnostics_log_analytics_workspace_id"></a> [diagnostics\_log\_analytics\_workspace\_id](#input\_diagnostics\_log\_analytics\_workspace\_id) | Resource ID of the log analytics workspace. Used for diagnostics logs and metrics. If not provided, diagnostics will not be enabled | `string` | `null` | no |
 | <a name="input_enable_advanced_threat_protection"></a> [enable\_advanced\_threat\_protection](#input\_enable\_advanced\_threat\_protection) | Boolean flag which controls if advanced threat protection is enabled | `bool` | `false` | no |
 | <a name="input_enable_versioning"></a> [enable\_versioning](#input\_enable\_versioning) | Is versioning enabled? Default to `false` | `bool` | `false` | no |
@@ -109,6 +110,7 @@ module "storage_account" {
 | <a name="input_tables"></a> [tables](#input\_tables) | List of storage tables | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
+| <a name="input_use_raw_name"></a> [use\_raw\_name](#input\_use\_raw\_name) | Don't add module naming convention | `bool` | `false` | no |
 
 ## Modules
 
@@ -116,7 +118,7 @@ module "storage_account" {
 |------|--------|---------|
 | <a name="module_diagnostic_settings"></a> [diagnostic\_settings](#module\_diagnostic\_settings) | claranet/diagnostic-settings/azurerm | 6.2.0 |
 | <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | getindata/resource-group/azurerm | 1.1.0 |
-| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.8.0 |
+| <a name="module_storage"></a> [storage](#module\_storage) | github.com/getindata/terraform-azurerm-storage | 2.9.0 |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 | <a name="module_this_private_endpoint_label"></a> [this\_private\_endpoint\_label](#module\_this\_private\_endpoint\_label) | cloudposse/label/null | 0.25.0 |
 

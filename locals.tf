@@ -1,5 +1,5 @@
 locals {
-  name_from_descriptor                  = replace(lookup(module.this.descriptors, "storage-account", module.this.id), "/-+/", "")
+  name_from_descriptor                  = replace(lookup(module.this.descriptors, var.descriptor_name, module.this.id), "/-+/", "")
   private_endpoint_name_from_descriptor = replace(lookup(module.this_private_endpoint_label.descriptors, "private-endpoint", module.this_private_endpoint_label.id), "/-+/", "")
 
   network_rules = (var.private_endpoint_enabled && var.network_rules == null ? {
