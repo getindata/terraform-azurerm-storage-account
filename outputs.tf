@@ -80,3 +80,23 @@ output "queues" {
   description = "Map of Storage SMB file shares"
   value       = one(module.storage[*].queues)
 }
+
+output "sftp_users" {
+  description = "Map of created sftp users."
+  value = {
+    for user_name, user in azurerm_storage_account_local_user.this : user_name => {
+      id   = user.id
+      name = user.name
+    }
+  }
+}
+
+output "sftp_users_credentials" {
+  description = "Map of created sftp users credentials."
+  value = {
+    for user_name, user in azurerm_storage_account_local_user.this : user_name => {
+      password = user.password
+    }
+  }
+  sensitive = true
+}
