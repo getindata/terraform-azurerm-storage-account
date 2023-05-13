@@ -200,7 +200,7 @@ variable "descriptor_name" {
   default     = "storage-account" #For backward compatibility reasons
 }
 
-variable "sftp_users" {
+variable "local_users" {
   description = "List of SFTP users."
   type = list(object({
     name                 = string
@@ -208,6 +208,7 @@ variable "sftp_users" {
     ssh_password_enabled = optional(bool)
     permissions = list(object({
       container   = string
+      service     = optional(string, "blob")
       permissions = optional(list(string), ["All"])
     }))
   }))

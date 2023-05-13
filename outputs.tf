@@ -81,7 +81,7 @@ output "queues" {
   value       = one(module.storage[*].queues)
 }
 
-output "sftp_users" {
+output "local_users" {
   description = "Map of created sftp users."
   value = {
     for user_name, user in azurerm_storage_account_local_user.this : user_name => {
@@ -91,7 +91,7 @@ output "sftp_users" {
   }
 }
 
-output "sftp_users_credentials" {
+output "local_users_credentials" {
   description = "Map of created sftp users credentials."
   value = {
     for user_name, user in azurerm_storage_account_local_user.this : user_name => {

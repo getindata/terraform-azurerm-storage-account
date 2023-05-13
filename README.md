@@ -88,6 +88,7 @@ module "storage_account" {
 | <a name="input_labels_as_tags"></a> [labels\_as\_tags](#input\_labels\_as\_tags) | Set of labels (ID elements) to include as tags in the `tags` output.<br>Default is to include all labels.<br>Tags with empty values will not be included in the `tags` output.<br>Set to `[]` to suppress all generated tags.<br>**Notes:**<br>  The value of the `name` tag, if included, will be the `id`, not the `name`.<br>  Unlike other `null-label` inputs, the initial setting of `labels_as_tags` cannot be<br>  changed in later chained modules. Attempts to change it will be silently ignored. | `set(string)` | <pre>[<br>  "default"<br>]</pre> | no |
 | <a name="input_last_access_time_enabled"></a> [last\_access\_time\_enabled](#input\_last\_access\_time\_enabled) | Is the last access time based tracking enabled? Default to `false` | `bool` | `false` | no |
 | <a name="input_lifecycles"></a> [lifecycles](#input\_lifecycles) | Configure Azure Storage lifecycles | `list(object({ prefix_match = set(string), tier_to_cool_after_days = number, tier_to_archive_after_days = number, delete_after_days = number, snapshot_delete_after_days = number }))` | `[]` | no |
+| <a name="input_local_users"></a> [local\_users](#input\_local\_users) | List of SFTP users. | <pre>list(object({<br>    name                 = string<br>    home_directory       = optional(string)<br>    ssh_password_enabled = optional(bool)<br>    permissions = list(object({<br>      container   = string<br>      service     = optional(string, "blob")<br>      permissions = optional(list(string), ["All"])<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | Azure datacenter location, where resources will be deployed | `string` | `null` | no |
 | <a name="input_managed_identity_ids"></a> [managed\_identity\_ids](#input\_managed\_identity\_ids) | A list of User Managed Identity ID's which should be assigned to the Linux Virtual Machine | `list(string)` | `null` | no |
 | <a name="input_managed_identity_type"></a> [managed\_identity\_type](#input\_managed\_identity\_type) | The type of Managed Identity which should be assigned to the Linux Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` | `string` | `null` | no |
@@ -103,7 +104,6 @@ module "storage_account" {
 | <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br>Characters matching the regex will be removed from the ID elements.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | A container that holds related resources for an Azure solution | `string` | n/a | yes |
 | <a name="input_sftp_enabled"></a> [sftp\_enabled](#input\_sftp\_enabled) | Enable SFTP for the storage account | `bool` | `false` | no |
-| <a name="input_sftp_users"></a> [sftp\_users](#input\_sftp\_users) | List of SFTP users. | <pre>list(object({<br>    name                 = string<br>    home_directory       = optional(string)<br>    ssh_password_enabled = optional(bool)<br>    permissions = list(object({<br>      container   = string<br>      permissions = optional(list(string), ["All"])<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_skuname"></a> [skuname](#input\_skuname) | The SKUs supported by Microsoft Azure Storage. Valid options are Premium\_LRS, Premium\_ZRS, Standard\_GRS, Standard\_GZRS, Standard\_LRS, Standard\_RAGRS, Standard\_RAGZRS, Standard\_ZRS | `string` | `"Standard_RAGRS"` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_storage_blob_data_contributors"></a> [storage\_blob\_data\_contributors](#input\_storage\_blob\_data\_contributors) | List of principal IDs that will have data contributor role | `list(string)` | `[]` | no |
@@ -129,12 +129,12 @@ module "storage_account" {
 |------|-------------|
 | <a name="output_containers"></a> [containers](#output\_containers) | Map of containers |
 | <a name="output_file_shares"></a> [file\_shares](#output\_file\_shares) | Map of Storage SMB file shares |
+| <a name="output_local_users"></a> [local\_users](#output\_local\_users) | Map of created sftp users. |
+| <a name="output_local_users_credentials"></a> [local\_users\_credentials](#output\_local\_users\_credentials) | Map of created sftp users credentials. |
 | <a name="output_queues"></a> [queues](#output\_queues) | Map of Storage SMB file shares |
 | <a name="output_resource_group_id"></a> [resource\_group\_id](#output\_resource\_group\_id) | The id of the resource group in which resources are created |
 | <a name="output_resource_group_location"></a> [resource\_group\_location](#output\_resource\_group\_location) | The location of the resource group in which resources are created |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | The name of the resource group in which resources are created |
-| <a name="output_sftp_users"></a> [sftp\_users](#output\_sftp\_users) | Map of created sftp users. |
-| <a name="output_sftp_users_credentials"></a> [sftp\_users\_credentials](#output\_sftp\_users\_credentials) | Map of created sftp users credentials. |
 | <a name="output_storage_account_id"></a> [storage\_account\_id](#output\_storage\_account\_id) | The ID of the storage account |
 | <a name="output_storage_account_name"></a> [storage\_account\_name](#output\_storage\_account\_name) | The name of the storage account |
 | <a name="output_storage_account_primary_blob_endpoint"></a> [storage\_account\_primary\_blob\_endpoint](#output\_storage\_account\_primary\_blob\_endpoint) | The endpoint URL for blob storage in the primary location |

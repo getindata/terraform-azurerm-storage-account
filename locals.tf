@@ -14,5 +14,5 @@ locals {
   storage_account_id   = one(module.storage[*].storage_account_id)
   storage_account_name = one(module.storage[*].storage_account_name)
 
-  sftp_users = { for user in var.sftp_users : user.name => user }
+  local_users = { for user in var.local_users : user.name => user }
 }
