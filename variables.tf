@@ -202,12 +202,12 @@ variable "descriptor_name" {
 
 variable "sftp_users" {
   description = "List of SFTP users."
-  type        = list(object({
+  type = list(object({
     name                 = string
     home_directory       = optional(string)
     ssh_password_enabled = optional(bool)
     permissions = list(object({
-      container = string
+      container   = string
       permissions = optional(list(string), ["All"])
     }))
   }))
