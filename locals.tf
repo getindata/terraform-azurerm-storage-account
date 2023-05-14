@@ -13,4 +13,6 @@ locals {
 
   storage_account_id   = one(module.storage[*].storage_account_id)
   storage_account_name = one(module.storage[*].storage_account_name)
+
+  local_users = { for user in var.local_users : user.name => user }
 }

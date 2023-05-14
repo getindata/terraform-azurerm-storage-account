@@ -106,3 +106,27 @@ resource "azurerm_private_endpoint" "this" {
 
   tags = module.this.tags
 }
+
+resource "azurerm_storage_account_local_user" "this" {
+  for_each = local.local_users
+
+  name                 = each.value.name
+  storage_account_id   = local.storage_account_id
+  ssh_password_enabled = each.value.ssh_password_enabled
+  home_directory       = each.value.home_directory
+
+  dynamic "permission_scope" {
+    for_each = each.value.permissions
+    content {
+      service       = permission_scope.value.service
+      resource_name = permission_scope.value.container
+      permissions {
+        read   = contains(permission_scope.value.permissions, "All") || contains(permission_scope.value.permissions, "Read")
+        write  = contains(permission_scope.value.permissions, "All") || contains(permission_scope.value.permissions, "Write")
+        delete = contains(permission_scope.value.permissions, "All") || contains(permission_scope.value.permissions, "Delete")
+        list   = contains(permission_scope.value.permissions, "All") || contains(permission_scope.value.permissions, "List")
+        create = contains(permission_scope.value.permissions, "All") || contains(permission_scope.value.permissions, "Create")
+      }
+    }
+  }
+}
