@@ -3,6 +3,11 @@ output "resource_group_name" {
   value       = local.resource_group_name
 }
 
+output "dno" {
+   description = "yes"
+   value       = local.storage_account_name
+ }
+
 output "resource_group_id" {
   description = "The id of the resource group in which resources are created"
   value       = one(module.storage[*].resource_group_id)
