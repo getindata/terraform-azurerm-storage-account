@@ -68,7 +68,7 @@ module "diagnostic_settings" {
   count = module.this.enabled && var.diagnostics_log_analytics_workspace_id != null ? 1 : 0
 
   source  = "claranet/diagnostic-settings/azurerm"
-  version = "6.2.0"
+  version = "6.5.0"
 
   resource_id = local.storage_account_id
   logs_destinations_ids = [
