@@ -1,6 +1,7 @@
 name: TF Pre-Commit
 
-permissions: {}
+permissions:
+  contents: read
 
 on:
   pull_request:
