@@ -13,7 +13,7 @@ module "resource_group" {
 
 module "vnet" {
   source  = "Azure/vnet/azurerm"
-  version = "2.6.0"
+  version = "4.1.0"
 
   resource_group_name = module.resource_group.name
   address_space       = ["10.0.0.0/16"]
