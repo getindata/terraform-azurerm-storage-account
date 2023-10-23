@@ -1,6 +1,6 @@
 module "resource_group" {
   source  = "getindata/resource-group/azurerm"
-  version = "1.1.0"
+  version = "1.2.1"
 
   context = module.this.context
 
